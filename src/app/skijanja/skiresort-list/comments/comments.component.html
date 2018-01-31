@@ -1,0 +1,48 @@
+<div class="row">
+	<div class="col-4">
+		<form class="form-group" (submit)="onSubmit()">
+			<label>Autor</label>
+			<input type="text" name="autor" class="form-control" [(ngModel)]="newComment.author">
+			<label>Comment</label>
+			<input type="text" name="comment" class="form-control" [(ngModel)]="newComment.text">
+			<button class="btn btn-primary">Save</button>
+		</form>
+	</div>
+
+	<div class="col-8">
+		<div *ngFor="let comment of commentList?.results">
+			<div class="row">
+				<div class="col-2">
+					<img src="assets/img/profile.png" width="50%" height="80%" >
+				</div>
+				<div class="col-10">
+					<div class="row">
+						<div class="col-6">
+							<p>{{comment.author}}</p>
+						</div>
+						<div class="col-6">
+							<p class="right">{{comment.date | date: 'M/d/yy'}}</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							{{comment.text}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col">
+				<button class="btn btn-default left"  *ngIf="activePage>1" (click)="pageChange(activePage-1)">&laquo; Previous</button> 
+				<button class="btn btn-default right" *ngIf="activePage<numberOfPages" (click)="pageChange(activePage+1)">Next &raquo;</button>
+			</div>
+			<!-- <ngb-pagination [collectionSize]="commentList?.count" [(page)]="activePage" aria-label="Default pagination" 
+				(pageChange)="myPageChange(activePage)" [(pageSize)]="pageSize"></ngb-pagination> -->
+		</div>
+
+	</div>
+</div>
+
+

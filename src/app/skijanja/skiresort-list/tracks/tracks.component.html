@@ -1,0 +1,27 @@
+<!-- create a local variable post; you tell trackBy to wait untill this local variable is ready "you do that by using elvis operator 'the question mark after the variable name', then use its id as tracker. -->
+
+<div *ngFor="let tracksByColor of tracks | groupBy let i=index ">  
+	<!-- {{track | json}} -->
+	<table class='table borderless'> 
+		<thead class="text-center">
+			<tr>
+				<th colspan="3">
+					<a [style.color]="tracksByColor[i]?.color">{{tracksByColor[i]?.color | capitalLetter}} color</a>
+				</th>
+			</tr>
+			<tr class="text-center">
+				<th>Name</th>
+				<th>Length</th>
+				<th>Rating</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="text-center" *ngFor="let track of tracksByColor" [style.color]="track.color" >  
+				<td>{{track.name}}</td>
+				<td>{{track.length_km}}</td>
+				<td>{{track.rating}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+

@@ -1,0 +1,33 @@
+<div class="row">
+	<div class="col">
+		<ski-mountain-panel [mountain]="mountain"></ski-mountain-panel>
+	</div>
+</div>
+<br>
+<div class="row">
+	<div class="col">
+		<ngb-accordion #acc="ngbAccordion" [closeOthers]="true" >
+		  <ngb-panel title="Tracks">
+		    <ng-template ngbPanelContent>
+		    	<div class="col-6">
+		    		<ski-tracks [tracks]="tracks"></ski-tracks>
+		    	</div>
+		    </ng-template>
+		  </ngb-panel>
+		   <ngb-panel title="Restaurants">
+		    <ng-template ngbPanelContent>
+		    	<div class="col" *ngFor="let restaurant of restaurants">
+		    		<ski-restaurants [restaurant]="restaurant"></ski-restaurants>
+		    	</div>
+		    </ng-template>
+		  </ngb-panel>
+		  <ngb-panel title="Comments">
+		    <ng-template ngbPanelContent>
+		     	<ski-comments [commentList]="commentList" [id]="mountain?._id" (emiter)="refreshComments($event)">
+		     	</ski-comments>
+		    </ng-template>
+		  </ngb-panel>
+		</ngb-accordion>
+	</div>
+</div>
+<br>
